@@ -100,7 +100,8 @@ app.controller("productosCtrl", function ($scope, $http) {
 
     var channel = pusher.subscribe("canalProductos")
     channel.bind("eventoProductos", function(data) {
-        alert(JSON.stringify(data))
+        // alert(JSON.stringify(data))
+        buscarProductos()
     })
 
     $(document).on("submit", "#frmProducto", function (event) {
@@ -111,8 +112,6 @@ app.controller("productosCtrl", function ($scope, $http) {
             nombre: $("#txtNombre").val(),
             precio: $("#txtPrecio").val(),
             existencias: $("#txtExistencias").val(),
-        }, function (respuesta) {
-            buscarProductos()
         })
     })
 
